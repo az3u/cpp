@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+void push(Nodo*&, Tipo);
+Tipo pop(Nodo*&);
+
+void push(Nodo *&ptrCima, Tipo valor) {
+	Nodo *ptrNuevo = new Nodo();
+	ptrNuevo->info = valor;
+	ptrNuevo->ptrSgte = ptrCima;
+	ptrCima = ptrNuevo;
+}
+Tipo pop(Nodo *&ptrCima) {
+	Tipo valorEliminado = ptrCima->info;
+	Nodo *ptrTemp = ptrCima;
+	ptrCima = ptrTemp->ptrSgte;
+	delete ptrTemp;
+	return valorEliminado;
+}
